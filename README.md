@@ -1,10 +1,10 @@
-# Blank template
+# Deno Starter
 
-This is a blank project with a static html file.
+This is a Deno project running on Docker in Codesandbox.
 
-[Configuration](https://codesandbox.io/docs/projects/learn/setting-up/tasks) has been added to optimize it for [CodeSandbox Projects](https://codesandbox.io/p/dashboard).
+Add your [configuration](https://codesandbox.io/docs/projects/learn/setting-up/tasks) to optimize it for [CodeSandbox](https://codesandbox.io/p/dashboard).
 
 ## Resources
 
-- [CodeSandbox Projects — Docs](https://codesandbox.io/docs/projects)
+- [CodeSandbox — Docs](https://codesandbox.io/docs/learn)
 - [CodeSandbox — Discord](https://discord.gg/Ggarp3pX5H)
