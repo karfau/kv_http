@@ -3,9 +3,27 @@ const accessToken = Deno.env.get("ACCESS_TOKEN");
 
 const kv = await Deno.openKv();
 
+const usage = `
+<html>
+<body>
+<h2>Usage</h2>
+<pre>
+  curl "https://kv-http.deno.dev" 
+    -X POST 
+    -H "Authorization: Bearer $KV_ACCESS_TOKEN"
+    -d '{"method": "set", "params": {"key": ["user"], "value": "pomdtr"}}'
+</pre>
+</body>
+</html>
+`;
+
 Deno.serve(async (req) => {
   if (req.method === "GET") {
-    return Response.redirect("https://github.com/pomdtr/kv_http");
+    return new Response(usage, {
+      headers: {
+        "Content-Type": "text/html",
+      },
+    });
   }
   if (req.method !== "POST") {
     return new Response("method not allowed", { status: 405 });
