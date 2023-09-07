@@ -4,6 +4,13 @@ const accessToken = Deno.env.get("ACCESS_TOKEN");
 const kv = await Deno.openKv();
 
 Deno.serve(async (req) => {
+  if (req.method === "GET") {
+    return Response.redirect("https://github.com/pomdtr/kv_http");
+  }
+  if (req.method !== "POST") {
+    return new Response("method not allowed", { status: 405 });
+  }
+
   const authorization = req.headers.get("Authorization");
   if (!authorization) {
     return new Response("unauthorized", { status: 403 });
@@ -13,10 +20,6 @@ Deno.serve(async (req) => {
   if (!token || token != accessToken) {
     console.log(token, accessToken);
     return new Response("unauthorized", { status: 403 });
-  }
-
-  if (req.method !== "POST") {
-    return new Response("method not allowed", { status: 405 });
   }
 
   const { method, params } = await req.json();
