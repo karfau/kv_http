@@ -3,12 +3,12 @@ const accessToken = Deno.env.get("ACCESS_TOKEN");
 
 const kv = await Deno.openKv();
 
-const usage = `
+const usage = (url: string) => `
 <html>
 <body>
 <h2>Usage</h2>
 <pre>
-  curl "https://kv-http.deno.dev" 
+  curl '${url}'
     -X POST 
     -H "Authorization: Bearer $KV_ACCESS_TOKEN"
     -d '{"method": "set", "params": {"key": ["user"], "value": "pomdtr"}}'
@@ -19,7 +19,7 @@ const usage = `
 
 Deno.serve(async (req) => {
   if (req.method === "GET") {
-    return new Response(usage, {
+    return new Response(usage(req.url), {
       headers: {
         "Content-Type": "text/html",
       },
