@@ -1,1 +1,0 @@
-FROM denoland/deno:debian-1.36.4
